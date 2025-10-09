@@ -10,30 +10,41 @@
 #include <iostream>
 #include <ctype.h>
 #include <stdlib.h>
-#include "JDV-GIPV-Model.h"
 #include "JDV-GIPV-View.h"
 
 int perguntaTamanho(){
     int tam;
-    printf("Insira o tamanho do mundo(minimo:10 - maximo:60):  ");
-    scanf("%d", &tam);
-    fclear();
+    do{
+    	printf("Insira o tamanho do mundo(minimo:10 - maximo:60): ");
+    	scanf("%d", &tam);
+   		fclear();
+   		if(tam >= 10 && tam <= 60){
+   			break;
+		   }
+		else{
+			printf("Tamanho invalido. Tente novamente\n");
+			system("pause");
+			limpaTela();
+		}
+	}while(true);
+	
     return tam;
 }
 
 void exibirMundo(int tamanho){
 	
-    for(int i = 0;i < tamanho; i++)
-		printf("\t%2d",i);
+	printf("   ");
+    for(int i = 0; i < tamanho; i++)
+		printf(" %2d", i);
 	
 	printf("\n\n");
 	
 	for(int i = 0; i < tamanho; i++)
 	{
-		printf("%d", i);
-		for(int k = 0; k < tamanho;k++)
+		printf("%2d ", i);
+		for(int k = 0; k < tamanho; k++)
 		{
-			printf("\t%2c", mundo[i][k]);
+			printf(" %2c", mundo[i][k]);
 		}	
 		printf("\n");
 	}

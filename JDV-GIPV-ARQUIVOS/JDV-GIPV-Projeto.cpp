@@ -5,9 +5,9 @@
 //Pedro Cione Barbosa
 //Vitor Seiji Colombo Nishida
 
-#include "JDV-GIPV-Model.h"
-#include "JDV-GIPV-View.h"
-#include "JDV-GIPV-Controller.h"
+#include "JDV-GIPV-Model.cpp"
+#include "JDV-GIPV-Controller.cpp"
+
 
 int main(){
     inicializarMundo();
