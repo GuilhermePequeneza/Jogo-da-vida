@@ -6,14 +6,10 @@
 //Vitor Seiji Colombo Nishida
 
 //Matriz mundo
-char mundo[60][60];
+extern char mundo[60][60];
 
 //Tamanho da matriz mundo
-int tamanho;
+extern int tamanho;
 
 //Inicializa o mundo com '.'
 void inicializarMundo();
-
-//Modifica uma célula ja existente
-void modificarCelula();
-

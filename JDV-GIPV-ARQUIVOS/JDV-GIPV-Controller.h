@@ -7,3 +7,6 @@
 
 //Função de jogar
 void jogar();
+
+//Modifica uma célula já existente
+void modificarCelula();

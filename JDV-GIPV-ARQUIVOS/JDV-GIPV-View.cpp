@@ -8,10 +8,17 @@
 //Bibliotecas 
 #include <stdio.h>
 #include <iostream>
+#include <ctype.h>
+#include <stdlib.h>
+#include "JDV-GIPV-Model.h"
 #include "JDV-GIPV-View.h"
 
-void perguntaTamanho(){
+int perguntaTamanho(){
+    int tam;
     printf("Insira o tamanho do mundo(minimo:10 - maximo:60):  ");
+    scanf("%d", &tam);
+    fclear();
+    return tam;
 }
 
 void exibirMundo(int tamanho){
@@ -32,25 +39,25 @@ void exibirMundo(int tamanho){
 	}
 }
 
-int escolherCelulaParaModificar(int linha, int coluna){
+void escolherCelulaParaModificar(int *linha, int *coluna){
     printf("Numero da linha que deseja modificar: ");
-	scanf("%d",&linha);
+	scanf("%d", linha);
 	fclear();
 	printf("Numero da coluna que deseja modificar: ");
-	scanf("%d",&coluna);
+	scanf("%d", coluna);
 	fclear();
-    return linha, coluna;
 }
 
 void caracterInvalido(){
-    printf("Caracter invalido");
+    printf("Caracter invalido\n");
 }
 
 char celulaInvalidaO(){
     char op;
-    printf("Ja existe uma celula viva nessa coordenada deseja deleta-la? (S/N): \n");
-    scanf("%c", &op);
-    op = tolower(getchar());
+    printf("Ja existe uma celula viva nessa coordenada deseja deleta-la? (S/N): ");
+    scanf(" %c", &op);
+    fclear();
+    op = tolower(op);
     return op;
 }
 

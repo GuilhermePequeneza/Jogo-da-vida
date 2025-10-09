@@ -5,13 +5,16 @@
 //Pedro Cione Barbosa
 //Vitor Seiji Colombo Nishida
 
-#include "JDV-GIPV-Controller.cpp"
-#include "JDV-GIPV-Model.cpp"
+#include "JDV-GIPV-Model.h"
+#include "JDV-GIPV-View.h"
+#include "JDV-GIPV-Controller.h"
 
-main(){
+int main(){
     inicializarMundo();
 
-    perguntaTamanho();
+    tamanho = perguntaTamanho();
 
     jogar();
+    
+    return 0;
 }

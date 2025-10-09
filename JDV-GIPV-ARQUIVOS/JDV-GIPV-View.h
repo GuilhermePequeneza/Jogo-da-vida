@@ -6,13 +6,13 @@
 //Vitor Seiji Colombo Nishida
 
 //Pergunta o tamanho da matriz mundo
-void perguntaTamanho();
+int perguntaTamanho();
 
 //Exibi a matriz mundo
 void exibirMundo(int tamanho);
 
 //Escolher uma célula para ser modificada
-int escolherCelulaParaModificar(int linha, int coluna);
+void escolherCelulaParaModificar(int *linha, int *coluna);
 
 //Limpa a tela
 void limpaTela();

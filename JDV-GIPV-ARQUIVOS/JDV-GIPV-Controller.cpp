@@ -5,45 +5,44 @@
 //Pedro Cione Barbosa
 //Vitor Seiji Colombo Nishida
 
+#include "JDV-GIPV-Model.h"
 #include "JDV-GIPV-Controller.h"
 #include "JDV-GIPV-View.h"
 
 
 void jogar(){
+    
+    exibirMundo(tamanho);
 
-
-    void perguntaTamanho();
-
-    do{
-       void exibirMundo(int tamanho);
-
-       void modificarCelula();
-    }while(true);
+    while(true){
+       modificarCelula();
+       exibirMundo(tamanho);
+    }
 
 }
 
 void modificarCelula(){
 
 	int erro;
-	int linha,coluna;
+	int linha, coluna;
 
-	int escolherCelulaParaModificar(int linha, int coluna);
+	escolherCelulaParaModificar(&linha, &coluna);
 	
 	
 	if(mundo[linha][coluna] == 'O')
 	{		
 		do
 		{
-            char celulaInvalidaO();
+            char opcao = celulaInvalidaO();
 
 			erro = 0;
-			if(celulaInvalidaO() == 's')
+			if(opcao == 's')
 			{
 				mundo[linha][coluna] = '.';
 			}
-			else if(celulaInvalidaO() != 'n')
+			else if(opcao != 'n')
 			{
-				void caracterInvalido();
+				caracterInvalido();
 				erro = 1;
 			}
 		}while(erro == 1);	

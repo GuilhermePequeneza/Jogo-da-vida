@@ -13,6 +13,9 @@
 #include <locale.h>
 #include "JDV-GIPV-Model.h"
 
+char mundo[60][60];
+int tamanho;
+
 void inicializarMundo()
 {
 	for(int i = 0;i < 60;i++)
@@ -23,7 +26,5 @@ void inicializarMundo()
 		}			
 	}		
 }
-
-
 
 
