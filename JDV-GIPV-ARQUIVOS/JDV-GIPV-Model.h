@@ -1,4 +1,4 @@
-//JDV-GIPV - Projeto Domino - Etapa 1
+//JDV-GIPV - Projeto Jogo da Vida - Etapa 1
 //08/10/2025 - Grupo: GIPV
 //Guilherme Pequeneza
 //Igor Dias da Silva
