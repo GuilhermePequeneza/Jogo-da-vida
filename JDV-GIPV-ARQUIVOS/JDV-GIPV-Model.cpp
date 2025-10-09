@@ -1,0 +1,29 @@
+//JDV-GIPV - Projeto Domino - Etapa 1
+//08/10/2025 - Grupo: GIPV
+//Guilherme Pequeneza
+//Igor Dias da Silva
+//Pedro Cione Barbosa
+//Vitor Seiji Colombo Nishida
+
+//Bibliotecas 
+#include <time.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <locale.h>
+#include "JDV-GIPV-Model.h"
+
+void inicializarMundo()
+{
+	for(int i = 0;i < 60;i++)
+	{
+		for(int k = 0; k < 60;k++)
+		{
+			mundo[i][k] = '.';			
+		}			
+	}		
+}
+
+
+
+
