@@ -51,12 +51,28 @@ void exibirMundo(int tamanho){
 }
 
 void escolherCelulaParaModificar(int *linha, int *coluna){
-    printf("Numero da linha que deseja modificar: ");
-	scanf("%d", linha);
-	fclear();
-	printf("Numero da coluna que deseja modificar: ");
-	scanf("%d", coluna);
-	fclear();
+	do{
+		limpaTela();
+		exibirMundo(tamanho);
+		
+		printf("\nNumero da linha que deseja modificar: ");
+		scanf("%d", linha);
+		fclear();
+		
+		printf("Numero da coluna que deseja modificar: ");
+		scanf("%d", coluna);
+		fclear();
+		
+		if (*coluna <= tamanho && *linha <= tamanho){
+			break;
+		}
+		else{
+			limpaTela();
+			printf("Numero de colunas e/ou linhas invalido. Tente novamente\n");
+			system("pause");
+			
+		}
+	} while (true);
 }
 
 void caracterInvalido(){
