@@ -110,3 +110,27 @@ void fclear(){
 void limpaTela(){
     system("cls");
 }
+
+char menuGeral()
+{
+     char op;
+     do{
+        limpaTela();
+    	printf("-------------------------\n");
+    	printf("|Digite 0 para Sair:    |\n");
+    	printf("|Digite 1 para Jogar:   |\n");
+    	printf("-------------------------\n");
+    	printf("Escolha: ");
+    	
+    	op = getchar();
+    	fclear();
+    	if(op != '0' || op != '1')
+    	{
+          return op;    
+              }
+        else{
+            printf("Opção inválida. Pressione Enter...\n");
+            getchar();
+        }
+	}while(1);
+}

@@ -28,3 +28,6 @@ void fclear();
 
 //Pegunta se quer ou nao quer vizinhos mortos aparecerem
 char perguntaVizinhosMortos();
+
+//Menu geral
+char menuGeral();
