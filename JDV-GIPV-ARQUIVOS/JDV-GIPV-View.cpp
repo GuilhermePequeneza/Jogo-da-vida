@@ -35,13 +35,13 @@ void exibirMundo(int tamanho){
 	
 	printf("   ");
     for(int i = 0; i < tamanho; i++)
-		printf(" %2d", i);
+		printf(" %0.2d", i);
 	
 	printf("\n\n");
 	
 	for(int i = 0; i < tamanho; i++)
 	{
-		printf("%2d ", i);
+		printf("%0.2d ", i);
 		for(int k = 0; k < tamanho; k++)
 		{
 			printf(" %2c", mundo[i][k]);
@@ -63,7 +63,7 @@ void escolherCelulaParaModificar(int *linha, int *coluna){
 		scanf("%d", coluna);
 		fclear();
 		
-		if (*coluna <= tamanho && *linha <= tamanho){
+		if (*coluna <= tamanho && *linha <= tamanho && *coluna >= 0 && *linha >= 0){
 			break;
 		}
 		else{
@@ -86,6 +86,15 @@ char celulaInvalidaO(){
     fclear();
     op = tolower(op);
     return op;
+}
+
+char perguntaVizinhosMortos(){
+	char op;
+    printf("Voce quer que mostre vizinhos mortos? (S/N): ");
+    scanf(" %c", &op);
+    fclear();
+    op = tolower(op);
+    return op;	
 }
 
 void fclear(){

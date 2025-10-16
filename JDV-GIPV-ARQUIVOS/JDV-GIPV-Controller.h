@@ -10,3 +10,6 @@ void jogar();
 
 //Modifica uma célula já existente
 void modificarCelula();
+
+//Tals
+void mostrarVizinhosMortos();

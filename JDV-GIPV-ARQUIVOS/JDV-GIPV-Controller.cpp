@@ -9,6 +9,7 @@
 #include "JDV-GIPV-Controller.h"
 #include "JDV-GIPV-View.cpp"
 
+//FALTA: MENU, OPCAO DE MOSTRAR OU NAO MOSTRAR CELULAR MORTAS VIZINHAS
 
 void jogar(){
 	
@@ -18,6 +19,7 @@ void jogar(){
 
     while(true){
        modificarCelula();
+       mostrarVizinhosMortos();
        exibirMundo(tamanho);
     }
 
@@ -51,7 +53,53 @@ void modificarCelula(){
 	}
 	else
 	{
-		mundo[linha][coluna] = 'O';
-	}
+		mundo[linha][coluna] = 'O';	
+	}	
+}
+
+void mostrarVizinhosMortos(){
+	
+	int erro;
+	do{
+		erro = 0;
+		char opcao = perguntaVizinhosMortos();
+		if(opcao == 's')
+		{
+			for(int linha = 0;linha < tamanho;linha++)
+			{
+				for(int coluna = 0;coluna < tamanho;coluna++)
+				{
+					if(mundo[linha][coluna] == 'O')
+					{
+						for(int i = linha - 1;i <= linha+1;i++)
+						{
+							for(int j = coluna -1; j <= coluna+1;j++)
+							{
+								if(mundo[i][j] == '.')
+								{									
+									mundo[i][j] = '+';
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		else if(opcao == 'n')
+		{
+			for(int linha = 0;linha < tamanho;linha++){
+				for(int coluna = 0;coluna < tamanho;coluna++){
+					if(mundo[linha][coluna] == '+'){
+						mundo[linha][coluna] = '.';
+					}
+				}
+			}
+		}
+		else
+		{
+			erro = 1;
+		}		
+	}while(erro == 1);
+	
 	
 }

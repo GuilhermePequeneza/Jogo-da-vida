@@ -25,3 +25,6 @@ char celulaInvalidaO();
 
 //Limpa o buffer
 void fclear();
+
+//Pegunta se quer ou nao quer vizinhos mortos aparecerem
+char perguntaVizinhosMortos();
