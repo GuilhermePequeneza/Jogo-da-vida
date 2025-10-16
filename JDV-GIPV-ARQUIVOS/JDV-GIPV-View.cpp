@@ -12,8 +12,13 @@
 #include <stdlib.h>
 #include "JDV-GIPV-View.h"
 
+
+ 
+	
+	
+	//salvando par caso nao funcione
 int perguntaTamanho(){
-    int tam;
+	int tam;
     do{
     	printf("Insira o tamanho do mundo(minimo:10 - maximo:60): ");
     	scanf("%d", &tam);
