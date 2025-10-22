@@ -124,13 +124,17 @@ char menuGeral()
     	
     	op = getchar();
     	fclear();
-    	if(op != '0' || op != '1')
+    	if(op == '0' || op == '1')
     	{
-          return op;    
+             return op;
+            
               }
-        else{
-            printf("Opção inválida. Pressione Enter...\n");
+        
+		else{
+           	 
+			printf("Opção inválida. Pressione Enter...\n");
             getchar();
+			  
         }
-	}while(1);
+	}while(op != '0' || op != '1');
 }

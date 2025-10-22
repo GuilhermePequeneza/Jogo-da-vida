@@ -1,4 +1,4 @@
-//JDV-GIPV - Projeto Jogo da Vida - Etapa 1
+ //JDV-GIPV - Projeto Jogo da Vida - Etapa 1
 //08/10/2025 - Grupo: GIPV
 //Guilherme Pequeneza
 //Igor Dias da Silva
@@ -15,5 +15,10 @@ int main(){
     jogar();
 
     return 0; */
-    menuGeral();
+    char op = menuGeral();
+    if(op == '1' ){
+		inicializarMundo();
+	   	jogar();
+		}
+
 }
