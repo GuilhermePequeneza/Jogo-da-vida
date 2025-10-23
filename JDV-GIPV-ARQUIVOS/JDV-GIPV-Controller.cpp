@@ -108,5 +108,43 @@ void mostrarVizinhosMortos(){
 		}		
 	}while(erro == 1);
 	
+}
+
+int calcVizinha(int linha,int coluna){
+	contviz = 0;
+	
+	//Contar vizinhos superiores
+	if(mundo[linha+1][coluna-1] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha+1][coluna] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha+1][coluna+1] == 'O'){
+		contviz++;
+	}
+	
+	//Contar vizinhos laterais
+	if(mundo[linha][coluna-1] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha][coluna+1] == 'O'){
+		contviz++;
+	}
+	
+	//Contar vizinhos inferiores
+	if(mundo[linha-1][coluna-1] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha-1][coluna] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha-1][coluna+1] == 'O'){
+		contviz++;
+	}
+	
+	return contviz;
 	
 }
+
+
