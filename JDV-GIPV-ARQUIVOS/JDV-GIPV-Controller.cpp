@@ -12,16 +12,23 @@
 //FALTA: OPCAO DE MOSTRAR OU NAO MOSTRAR CELULAR MORTAS VIZINHAS
 
 void jogar(){
-	
-    limpaTela();
+	char op;
+	op = menuGeral();
+	if(op == '1'){
+		limpaTela();
+		
+		inicializarMundo();
+		tamanho = perguntaTamanho();
     
-    exibirMundo(tamanho);
+    	exibirMundo(tamanho);
 
-    while(true){
-       modificarCelula();
-       mostrarVizinhosMortos();
-       exibirMundo(tamanho);
-    }
+	    while(true){
+	       modificarCelula();
+	       mostrarVizinhosMortos();
+	       exibirMundo(tamanho);
+	    }
+	}
+    
 
 }
 

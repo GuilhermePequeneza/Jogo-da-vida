@@ -10,15 +10,7 @@
 
 
 int main(){
-    /*inicializarMundo();
-    tamanho = perguntaTamanho();
-    jogar();
 
-    return 0; */
-    char op = menuGeral();
-    if(op == '1' ){
-		inicializarMundo();
-	   	jogar();
-		}
-
+	jogar();
+	
 }
