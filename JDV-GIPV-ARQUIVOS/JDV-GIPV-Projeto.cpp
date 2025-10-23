@@ -1,5 +1,5 @@
- //JDV-GIPV - Projeto Jogo da Vida - Etapa 1
-//08/10/2025 - Grupo: GIPV
+ //JDV-GIPV - Projeto Jogo da Vida - Etapa 3
+//28/10/2025 - Grupo: GIPV
 //Guilherme Pequeneza
 //Igor Dias da Silva
 //Pedro Cione Barbosa
