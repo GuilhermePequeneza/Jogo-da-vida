@@ -31,3 +31,9 @@ char perguntaVizinhosMortos();
 
 //Menu geral
 char menuGeral();
+
+//Perguntar velocidade da simulacao
+char velSim();
+
+//Perguntar quantidade de simulacoes
+char quantSim();

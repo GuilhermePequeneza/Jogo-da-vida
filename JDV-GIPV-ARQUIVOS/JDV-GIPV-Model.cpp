@@ -27,4 +27,42 @@ void inicializarMundo()
 	}		
 }
 
+void simulacao()
+{
+	int numViz;
+	//fazer a proxima geracao e armazenar na matriz proxGen
+	for(int i = 0; i < tamanho; i++)
+	{
+		for(int j = 0; j < tamanho; j++)
+		{
+			numViz = calcVizinha(i,j);
+			if(mundo[i][j] == '.' || mundo[i][j] == '+');
+			{
+				if(numViz == 3)
+				{
+					proxGen[i][j] = 'O';
+				}
+				else
+				{
+					proxGen[i][j] = '.';
+				}
+			}
+			else
+			{
+				if(numViz <= 1)
+				{
+					//morte por solidao
+					proxGen[i][j] = '.';
+				}
+				else if(numViz >= 4)
+				{
+					//morte por competicao
+					proxGen[i][j] = '.';
+				}
+			}
+		}
+	}
+}
+
+
 

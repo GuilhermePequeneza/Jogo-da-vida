@@ -13,3 +13,6 @@ extern int tamanho;
 
 //Inicializa o mundo com '.'
 void inicializarMundo();
+
+//Matriz mundo
+extern char proxGen[60][60];

@@ -132,9 +132,27 @@ char menuGeral()
         
 		else{
            	 
-			printf("Opção inválida. Pressione Enter...\n");
+			printf("Opï¿½ï¿½o invï¿½lida. Pressione Enter...\n");
             getchar();
 			  
         }
 	}while(op != '0' || op != '1');
+}
+
+char velSim()
+{
+	char op;
+    printf("Qual a velocidade desejada para a simulaÃ§Ã£o? (0/1): ");
+    scanf(" %c", &op);
+    fclear();
+    return op;
+}
+
+char quantSim()
+{
+	char op;
+    printf("Qual a quantidade de simulaÃ§Ãµes?: ");
+    scanf(" %c", &op);
+    fclear();
+    return op;
 }

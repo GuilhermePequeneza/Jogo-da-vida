@@ -13,6 +13,7 @@
 
 void jogar(){
 	char op;
+	
 	op = menuGeral();
 	if(op == '1'){
 		limpaTela();
