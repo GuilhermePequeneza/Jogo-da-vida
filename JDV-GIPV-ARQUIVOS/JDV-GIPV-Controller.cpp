@@ -111,7 +111,7 @@ void mostrarVizinhosMortos(){
 }
 
 int calcVizinha(int linha,int coluna){
-	contviz = 0;
+	int contviz = 0;
 	
 	//Contar vizinhos superiores
 	if(mundo[linha+1][coluna-1] == 'O'){

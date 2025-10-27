@@ -5,10 +5,10 @@
 //Pedro Cione Barbosa
 //Vitor Seiji Colombo Nishida
 
-//Função de jogar
+//Funcao de jogar
 void jogar();
 
-//Modifica uma célula já existente
+//Modifica uma celula ja existente
 void modificarCelula();
 
 //Tals
