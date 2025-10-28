@@ -8,7 +8,7 @@
 //Pergunta o tamanho da matriz mundo
 int perguntaTamanho();
 
-//Exibi a matriz mundo
+//Exibe a matriz mundo
 void exibirMundo(int tamanho);
 
 //Escolher uma célula para ser modificada
@@ -33,7 +33,10 @@ char perguntaVizinhosMortos();
 char menuGeral();
 
 //Perguntar velocidade da simulacao
-char velSim();
+int velSim();
 
 //Perguntar quantidade de simulacoes
-char quantSim();
+int quantSim();
+
+//Perguntar se quer iniciar a simulacao
+char querIniciar();

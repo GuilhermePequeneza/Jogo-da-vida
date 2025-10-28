@@ -114,45 +114,59 @@ void limpaTela(){
 char menuGeral()
 {
      char op;
+     int invalido = 0;
      do{
-        limpaTela();
-    	printf("-------------------------\n");
-    	printf("|Digite 0 para Sair:    |\n");
-    	printf("|Digite 1 para Jogar:   |\n");
-    	printf("-------------------------\n");
-    	printf("Escolha: ");
+    	printf("------------------------------------------\n");
+    	printf("|Digite 0 para Sair:                     |\n");
+    	printf("|Digite 1 para Simular:                  |\n");
+		printf("|Digite 2 para Exibir o Mundo:           |\n");
+		printf("|Digite 3 para Modificar uma celula:     |\n");
+		printf("|Digite 4 para Exibir vizinhos mortos:   |\n");
+    	printf("------------------------------------------\n");
     	
     	op = getchar();
     	fclear();
-    	if(op == '0' || op == '1')
+    	if(op == '0' || op == '1' || op == '2' || op == '3' || op == '4')
     	{
+              limpaTela();
              return op;
             
               }
         
 		else{
            	 
-			printf("Op��o inv�lida. Pressione Enter...\n");
+			printf("Opcao invalida. Pressione Enter...\n");
+			invalido = 1;
             getchar();
+            fclear();		
 			  
         }
-	}while(op != '0' || op != '1');
+	}while(invalido = 1);
 }
 
-char velSim()
+int velSim()
 {
-	char op;
-    printf("Qual a velocidade desejada para a simulação? (0/1): ");
-    scanf(" %c", &op);
+	int op;
+    printf("Qual a velocidade desejada para a simulacao? (0/1): ");
+    scanf(" %d", &op);
     fclear();
     return op;
 }
 
-char quantSim()
+int quantSim()
 {
-	char op;
-    printf("Qual a quantidade de simulações?: ");
-    scanf(" %c", &op);
+	int op;
+    printf("Qual a quantidade de simulacoes?: ");
+    scanf(" %d", &op);
     fclear();
     return op;
+}
+
+char querIniciar(){
+	char op;
+    printf("Voce quer iniciar a simulacao? (S/N): ");
+    scanf(" %c", &op);
+    fclear();
+    op = tolower(op);
+    return op;	
 }

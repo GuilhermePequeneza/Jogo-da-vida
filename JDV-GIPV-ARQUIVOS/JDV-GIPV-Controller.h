@@ -14,5 +14,5 @@ void modificarCelula();
 //Tals
 void mostrarVizinhosMortos();
 
-//Calcula vizinhas de uma celula
-int calcVizinha(int linha,int coluna);
+//executar a simulacao
+void executarSim();

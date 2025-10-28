@@ -14,6 +14,7 @@
 #include "JDV-GIPV-Model.h"
 
 char mundo[60][60];
+char proxGen[60][60];
 int tamanho;
 
 void inicializarMundo()
@@ -36,7 +37,7 @@ void simulacao()
 		for(int j = 0; j < tamanho; j++)
 		{
 			numViz = calcVizinha(i,j);
-			if(mundo[i][j] == '.' || mundo[i][j] == '+');
+			if(mundo[i][j] == '.' || mundo[i][j] == '+')
 			{
 				if(numViz == 3)
 				{
@@ -59,10 +60,60 @@ void simulacao()
 					//morte por competicao
 					proxGen[i][j] = '.';
 				}
+				else
+				{
+					//sobrevive
+					proxGen[i][j] = 'O';
+				}
 			}
+		}
+	}
+
+	//copiar proxgen de volta pro mundo
+	for(int i = 0; i < tamanho; i++)
+	{
+		for(int j = 0; j < tamanho; j++)
+		{
+			mundo[i][j] = proxGen[i][j];
 		}
 	}
 }
 
+int calcVizinha(int linha,int coluna){
+	int contviz = 0;
+	
+	//Contar vizinhos superiores
+	if(mundo[linha+1][coluna-1] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha+1][coluna] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha+1][coluna+1] == 'O'){
+		contviz++;
+	}
+	
+	//Contar vizinhos laterais
+	if(mundo[linha][coluna-1] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha][coluna+1] == 'O'){
+		contviz++;
+	}
+	
+	//Contar vizinhos inferiores
+	if(mundo[linha-1][coluna-1] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha-1][coluna] == 'O'){
+		contviz++;
+	}
+	if(mundo[linha-1][coluna+1] == 'O'){
+		contviz++;
+	}
+	
+	return contviz;
+	
+}
 
 

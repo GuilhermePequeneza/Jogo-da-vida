@@ -8,28 +8,32 @@
 
 #include "JDV-GIPV-Controller.h"
 #include "JDV-GIPV-View.cpp"
+#include "JDV-GIPV-Model.h"
+#include <windows.h>
 
 //FALTA: OPCAO DE MOSTRAR OU NAO MOSTRAR CELULAR MORTAS VIZINHAS
 
 void jogar(){
 	char op;
-	
-	op = menuGeral();
-	if(op == '1'){
-		limpaTela();
-		
-		inicializarMundo();
-		tamanho = perguntaTamanho();
-    
-    	exibirMundo(tamanho);
+	tamanho = perguntaTamanho();
+	inicializarMundo();
 
-	    while(true){
-	       modificarCelula();
-	       mostrarVizinhosMortos();
-	       exibirMundo(tamanho);
-	    }
-	}
-    
+	do{
+		op = menuGeral();
+		if(op == '1'){
+			executarSim();
+		}
+		else if(op == '2'){
+			exibirMundo(tamanho);
+		}
+		else if(op == '3'){
+			modificarCelula();
+		}
+		else if(op == '4'){
+			mostrarVizinhosMortos();
+		}
+
+	}while(op != '0');
 
 }
 
@@ -111,41 +115,35 @@ void mostrarVizinhosMortos(){
 	
 }
 
-int calcVizinha(int linha,int coluna){
-	int contviz = 0;
-	
-	//Contar vizinhos superiores
-	if(mundo[linha+1][coluna-1] == 'O'){
-		contviz++;
-	}
-	if(mundo[linha+1][coluna] == 'O'){
-		contviz++;
-	}
-	if(mundo[linha+1][coluna+1] == 'O'){
-		contviz++;
-	}
-	
-	//Contar vizinhos laterais
-	if(mundo[linha][coluna-1] == 'O'){
-		contviz++;
-	}
-	if(mundo[linha][coluna+1] == 'O'){
-		contviz++;
-	}
-	
-	//Contar vizinhos inferiores
-	if(mundo[linha-1][coluna-1] == 'O'){
-		contviz++;
-	}
-	if(mundo[linha-1][coluna] == 'O'){
-		contviz++;
-	}
-	if(mundo[linha-1][coluna+1] == 'O'){
-		contviz++;
+
+
+
+void executarSim()
+{
+	int quant = quantSim();
+	int velocidade = velSim();
+
+	//loop pra cada geração
+	for(int geracao = 1; geracao <= quant; geracao++)
+	{
+		limpaTela();
+
+		printf("Geracao: %d/%d\n", geracao, quant);
+		simulacao();
+		exibirMundo(tamanho);
+
+		if(velocidade == 0)
+		{
+			system("pause");
+		}
+		else
+		{
+			Sleep(velocidade * 1000);
+		}
+
 	}
 	
-	return contviz;
-	
+	printf("\n Fim da Simulacao!\n");
+	system("pause");
+	exit(0);
 }
-
-

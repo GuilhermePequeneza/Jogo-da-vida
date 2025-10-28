@@ -14,5 +14,8 @@ extern int tamanho;
 //Inicializa o mundo com '.'
 void inicializarMundo();
 
-//Matriz mundo
+//Matriz auxiliar
 extern char proxGen[60][60];
+
+//Calcula vizinhas de uma celula
+int calcVizinha(int linha,int coluna);
