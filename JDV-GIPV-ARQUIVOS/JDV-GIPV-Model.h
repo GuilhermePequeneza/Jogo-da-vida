@@ -6,7 +6,10 @@
 //Vitor Seiji Colombo Nishida
 
 //Matriz mundo
-extern char mundo[60][60];
+extern char **mundo;
+
+//Matriz auxiliar
+extern char **proxGen;
 
 //Tamanho da matriz mundo
 extern int tamanho;
@@ -15,7 +18,7 @@ extern int tamanho;
 void inicializarMundo();
 
 //Matriz auxiliar
-extern char proxGen[60][60];
+//extern char proxGen[60][60];
 
 //Calcula vizinhas de uma celula
 int calcVizinha(int linha,int coluna);

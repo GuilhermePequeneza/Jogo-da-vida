@@ -13,19 +13,31 @@
 #include <locale.h>
 #include "JDV-GIPV-Model.h"
 
-char mundo[60][60];
-char proxGen[60][60];
+char **mundo = NULL;
+char **proxGen = NULL;
 int tamanho;
 
 void inicializarMundo()
 {
-	for(int i = 0;i < 60;i++)
-	{
-		for(int k = 0; k < 60;k++)
-		{
-			mundo[i][k] = '.';			
-		}			
-	}		
+    //Aloca memória para as linhas conforme o tamanho 
+    mundo = (char**)malloc(tamanho * sizeof(char*));
+    proxGen = (char**)malloc(tamanho * sizeof(char*));
+    
+    //Aloca memória para as colunas de cada linha
+    for(int i = 0; i < tamanho; i++)
+    {
+        mundo[i] = (char*)malloc(tamanho * sizeof(char));
+        proxGen[i] = (char*)malloc(tamanho * sizeof(char));
+    }
+    
+    // Inicializar com '.'
+    for(int i = 0; i < tamanho; i++)
+    {
+        for(int k = 0; k < tamanho; k++)
+        {
+            mundo[i][k] = '.';
+        }
+    }
 }
 
 void simulacao()
@@ -79,41 +91,24 @@ void simulacao()
 	}
 }
 
-int calcVizinha(int linha,int coluna){
-	int contviz = 0;
-	
-	//Contar vizinhos superiores
-	if(mundo[linha+1][coluna-1] == 'O'){
-		contviz++;
+int calcVizinha(int linha, int coluna){
+    int contviz = 0;
+    
+    for(int i = linha - 1; i <= linha + 1; i++){
+        for(int j = coluna - 1; j <= coluna + 1; j++){
+            if(i != linha || j != coluna){
+				if(i >= 0 && i < tamanho && j >= 0 && j < tamanho){
+					if(mundo[i][j] == 'O'){
+						contviz++;
+					}
+        		}
+			}
+            
+           
+   		}
+    
+   
 	}
-	if(mundo[linha+1][coluna] == 'O'){
-		contviz++;
-	}
-	if(mundo[linha+1][coluna+1] == 'O'){
-		contviz++;
-	}
-	
-	//Contar vizinhos laterais
-	if(mundo[linha][coluna-1] == 'O'){
-		contviz++;
-	}
-	if(mundo[linha][coluna+1] == 'O'){
-		contviz++;
-	}
-	
-	//Contar vizinhos inferiores
-	if(mundo[linha-1][coluna-1] == 'O'){
-		contviz++;
-	}
-	if(mundo[linha-1][coluna] == 'O'){
-		contviz++;
-	}
-	if(mundo[linha-1][coluna+1] == 'O'){
-		contviz++;
-	}
-	
-	return contviz;
-	
+	 return contviz;
 }
-
 

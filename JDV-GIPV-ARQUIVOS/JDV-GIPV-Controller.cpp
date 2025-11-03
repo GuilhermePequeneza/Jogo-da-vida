@@ -70,49 +70,40 @@ void modificarCelula(){
 }
 
 void mostrarVizinhosMortos(){
-	
-	int erro;
-	do{
-		erro = 0;
-		char opcao = perguntaVizinhosMortos();
-		if(opcao == 's')
-		{
-			for(int linha = 0;linha < tamanho;linha++)
-			{
-				for(int coluna = 0;coluna < tamanho;coluna++)
-				{
-					if(mundo[linha][coluna] == 'O')
-					{
-						for(int i = linha - 1;i <= linha+1;i++)
-						{
-							for(int j = coluna -1; j <= coluna+1;j++)
-							{
-								if(mundo[i][j] == '.')
-								{									
-									mundo[i][j] = '+';
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		else if(opcao == 'n')
-		{
-			for(int linha = 0;linha < tamanho;linha++){
-				for(int coluna = 0;coluna < tamanho;coluna++){
-					if(mundo[linha][coluna] == '+'){
-						mundo[linha][coluna] = '.';
-					}
-				}
-			}
-		}
-		else
-		{
-			erro = 1;
-		}		
-	}while(erro == 1);
-	
+    int erro;
+    do{
+        erro = 0;
+        char opcao = perguntaVizinhosMortos();
+        if(opcao == 's'){
+            for(int linha = 0; linha < tamanho; linha++){
+                for(int coluna = 0; coluna < tamanho; coluna++){
+                    if(mundo[linha][coluna] == 'O'){
+                        for(int i = linha - 1; i <= linha+1; i++){
+                            for(int j = coluna - 1; j <= coluna+1; j++){
+                                if(i >= 0 && i < tamanho && j >= 0 && j < tamanho){
+                                    if(mundo[i][j] == '.'){
+                                        mundo[i][j] = '+';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else if(opcao == 'n'){
+            for(int linha = 0; linha < tamanho; linha++){
+                for(int coluna = 0; coluna < tamanho; coluna++){
+                    if(mundo[linha][coluna] == '+'){
+                        mundo[linha][coluna] = '.';
+                    }
+                }
+            }
+        }
+        else{
+            erro = 1;
+        }		
+    }while(erro == 1);
 }
 
 
