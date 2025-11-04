@@ -18,7 +18,9 @@ void jogar(){
 	tamanho = perguntaTamanho();
 	inicializarMundo();
 
-	do{
+	do
+	{
+
 		op = menuGeral();
 		if(op == '1'){
 			executarSim();
@@ -119,7 +121,7 @@ void executarSim()
 	{
 		limpaTela();
 
-		printf("Geracao: %d/%d\n", geracao, quant);
+		printf("Geracao: %d/%d\n", geracao, quant); 
 		simulacao();
 		exibirMundo(tamanho);
 
@@ -134,7 +136,7 @@ void executarSim()
 
 	}
 	
-	printf("\n Fim da Simulacao!\n");
+	printf("\n Fim da Simulacao!\n"); 
 	system("pause");
 	exit(0);
 }
