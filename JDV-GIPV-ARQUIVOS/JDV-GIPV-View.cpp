@@ -170,3 +170,51 @@ char querIniciar(){
     op = tolower(op);
     return op;	
 }
+
+void MostraLvivo()
+{
+	TipoCel *aux;
+	aux = pvivo;
+	if(totvivo > 0)
+	{
+		while(aux->next != NULL)
+		{
+			printf("%d,%d ", aux->lin, aux->col);
+			aux = aux->next;
+		}
+		printf("%d,%d ",aux->lin,aux->col);
+	}
+	printf("\n");
+}
+
+void MostraLmorto()
+{
+	TipoCel *aux;
+	aux = pmorto;
+	if(totmorto > 0)
+	{
+		while(aux->next != NULL)
+		{
+			printf("%d,%d ", aux->lin, aux->col);
+			aux = aux->next;
+		}
+		printf("%d,%d ",aux->lin,aux->col);
+	}
+	printf("\n");
+}
+
+void MostraLvivoprox()
+{
+	TipoCel *aux;
+	aux = pvivoprox;
+	if(totvivoprox > 0)
+	{
+		while(aux->next != NULL)
+		{
+			printf("%d,%d ", aux->lin, aux->col);
+			aux = aux->next;
+		}
+		printf("%d,%d ",aux->lin,aux->col);
+	}
+	printf("\n");
+}

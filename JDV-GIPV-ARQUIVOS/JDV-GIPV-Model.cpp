@@ -17,6 +17,12 @@ char **mundo = NULL;
 char **proxGen = NULL;
 int tamanho;
 
+typedef struct cel
+{
+	int lin,col;
+	struct cel *next;
+}TipoCel;
+
 void inicializarMundo()
 {
     //Aloca memória para as linhas conforme o tamanho 
@@ -97,7 +103,7 @@ int calcVizinha(int linha, int coluna){
     for(int i = linha - 1; i <= linha + 1; i++){
         for(int j = coluna - 1; j <= coluna + 1; j++){
             if(i != linha || j != coluna){
-				if(i >= 0 && i < tamanho && j >= 0 && j < tamanho){
+				if(i >= 0 && i < tamanho && j => 0 && j < tamanho){
 					if(mundo[i][j] == 'O'){
 						contviz++;
 					}
@@ -112,3 +118,152 @@ int calcVizinha(int linha, int coluna){
 	 return contviz;
 }
 
+void carregaVivo(int ii, int jj)
+{
+	TipoCel *aux = malloc(sizeof(TipoCel)); //Define ponteiro e o aloca
+
+	if(aux == NULL)
+	{
+		apresentaMensagem("Sem espaço na memoria para inclusao de celula viva\n");
+		return;
+	}
+	aux->lin = ii;
+	aux->col = jj;
+
+	if(totvivo == 0)
+	{
+		pvivo = aux;
+		pvivo->next = NULL;
+	}
+	else
+	{
+		aux->next = pvivo;
+		pvivo = aux;
+	}
+	totvivo++;
+}
+
+void excluiLVivo(int ii,int jj)
+{
+	TipoCel *aux,*aux2;
+
+	aux = pvivo;
+	aux2 = aux;
+	if(totvivo > 0)
+	{
+		while (aux->lin != ii || aux->col != jj)
+		{
+			aux2 = aux;
+			aux = aux->next;
+		}
+		if(aux->lin == ii && aux->col == jj)
+		{
+			if(aux2 == aux)
+				pvivo = aux->next;
+			else
+				aux2->next = aux->next;
+			free(aux);
+		}
+		totvivo--;
+	}
+}
+
+void carregaMorto(int ii, int jj)
+{
+	TipoCel *aux = malloc(sizeof(TipoCel)); //Define ponteiro e o aloca
+
+	if(aux == NULL)
+	{
+		apresentaMensagem("Sem espaço na memoria para inclusao de celula morta\n");
+		return;
+	}
+	aux->lin = ii;
+	aux->col = jj;
+
+	if(totmorto == 0)
+	{
+		pmorto = aux;
+		pmorto->next = NULL;
+	}
+	else
+	{
+		aux->next = pmorto;
+		pmorto = aux;
+	}
+	totmorto++;
+}
+
+void excluiLMorto(int ii,int jj)
+{
+	TipoCel *aux,*aux2;
+
+	aux = pmorto;
+	aux2 = aux;
+	if(totmorto > 0)
+	{
+		while (aux->lin != ii || aux->col != jj)
+		{
+			aux2 = aux;
+			aux = aux->next;
+		}
+		if(aux->lin == ii && aux->col == jj)
+		{
+			if(aux2 == aux)
+				pmorto = aux->next;
+			else
+				aux2->next = aux->next;
+			free(aux);
+		}
+		totmorto--;
+	}
+}
+
+void carregaVivoprox(int ii, int jj)
+{
+	TipoCel *aux = malloc(sizeof(TipoCel)); //Define ponteiro e o aloca
+
+	if(aux == NULL)
+	{
+		apresentaMensagem("Sem espaço na memoria para inclusao de celula viva proxima\n");
+		return;
+	}
+	aux->lin = ii;
+	aux->col = jj;
+
+	if(totvivoprox == 0)
+	{
+		pvivoprox = aux;
+		pvivoprox->next = NULL;
+	}
+	else
+	{
+		aux->next = pvivoprox;
+		pvivoprox = aux;
+	}
+	totvivoprox++;
+}
+
+void excluiLVivoprox(int ii,int jj)
+{
+	TipoCel *aux,*aux2;
+
+	aux = pvivoprox;
+	aux2 = aux;
+	if(totvivoprox > 0)
+	{
+		while (aux->lin != ii || aux->col != jj)
+		{
+			aux2 = aux;
+			aux = aux->next;
+		}
+		if(aux->lin == ii && aux->col == jj)
+		{
+			if(aux2 == aux)
+				pvivoprox = aux->next;
+			else
+				aux2->next = aux->next;
+			free(aux);
+		}
+		totvivoprox--;
+	}
+}

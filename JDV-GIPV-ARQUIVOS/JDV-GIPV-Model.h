@@ -14,6 +14,10 @@ extern char **proxGen;
 //Tamanho da matriz mundo
 extern int tamanho;
 
+TipoCel *pvivo, *pmorto, *pvivoprox;
+
+int totvivo, totmorto, totvivoprox;
+
 //Inicializa o mundo com '.'
 void inicializarMundo();
 
