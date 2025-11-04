@@ -1,4 +1,4 @@
-//JDV-GIPV - Projeto Jogo da Vida - Etapa 3
+//JDV-GIPV - Projeto Jogo da Vida - Etapa 4
 //28/10/2025 - Grupo: GIPV
 //Guilherme Pequeneza
 //Igor Dias da Silva
