@@ -57,6 +57,7 @@ void modificarCelula(){
 			if(opcao == 's')
 			{
 				mundo[linha][coluna] = '.';
+				excluiLVivo(linha,coluna);						
 			}
 			else if(opcao != 'n')
 			{
@@ -68,6 +69,7 @@ void modificarCelula(){
 	else
 	{
 		mundo[linha][coluna] = 'O';	
+		carregaVivo(linha,coluna);		
 	}	
 }
 
@@ -77,30 +79,10 @@ void mostrarVizinhosMortos(){
         erro = 0;
         char opcao = perguntaVizinhosMortos();
         if(opcao == 's'){
-            for(int linha = 0; linha < tamanho; linha++){
-                for(int coluna = 0; coluna < tamanho; coluna++){
-                    if(mundo[linha][coluna] == 'O'){
-                        for(int i = linha - 1; i <= linha+1; i++){
-                            for(int j = coluna - 1; j <= coluna+1; j++){
-                                if(i >= 0 && i < tamanho && j >= 0 && j < tamanho){
-                                    if(mundo[i][j] == '.'){
-                                        mundo[i][j] = '+';
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            
         }
         else if(opcao == 'n'){
-            for(int linha = 0; linha < tamanho; linha++){
-                for(int coluna = 0; coluna < tamanho; coluna++){
-                    if(mundo[linha][coluna] == '+'){
-                        mundo[linha][coluna] = '.';
-                    }
-                }
-            }
+            
         }
         else{
             erro = 1;
@@ -108,6 +90,50 @@ void mostrarVizinhosMortos(){
     }while(erro == 1);
 }
 
+void acharMortosVizinhos()
+{
+	int i, j;
+
+	TipoCel *aux = pvivo;
+
+	liberaLista(&pmorto);
+
+	while(aux != NULL)
+	{
+		i = aux->lin;
+		j = aux->col;
+
+		//superiores
+		if(mundo[i-1][j-1] == '.' )		
+			carregaMorto(i-1,j-1);
+		
+		if(mundo[i-1][j] == '.')		
+			carregaMorto(i-1,j);
+		
+		if(mundo[i-1][j+1] == '.')
+			carregaMorto(i-1,j+1);
+
+
+		//Laterais
+		if(mundo[i][j-1] == '.')
+			carregaMorto(i,j-1);
+		if(mundo[i][j+1] == '.')
+			carregaMorto(i,j+1);
+
+
+		//Inferiores
+		if(mundo[i+1][j-1] == '.' )		
+			carregaMorto(i+1,j-1);
+		
+		if(mundo[i+1][j] == '.')		
+			carregaMorto(i+1,j);
+		
+		if(mundo[i+1][j+1] == '.')
+			carregaMorto(i+1,j+1);
+
+		aux = aux->next;
+	}
+}
 
 
 
@@ -116,13 +142,26 @@ void executarSim()
 	int quant = quantSim();
 	int velocidade = velSim();
 
+	printf("Total de vivos inicial: %d\n", totvivo);
+    TipoCel *teste = pvivo;
+    while(teste != NULL) {
+        printf("Vivo em: %d,%d\n", teste->lin, teste->col);
+        teste = teste->next;
+    }
+
 	//loop pra cada geração
 	for(int geracao = 1; geracao <= quant; geracao++)
 	{
 		limpaTela();
 
-		printf("Geracao: %d/%d\n", geracao, quant); 
+		printf("Geracao: %d/%d\n", geracao, quant); 		
+
+		acharMortosVizinhos();
+				
 		simulacao();
+
+		inicializarMundo();
+
 		exibirMundo(tamanho);
 
 		if(velocidade == 0)
@@ -137,6 +176,5 @@ void executarSim()
 	}
 	
 	printf("\n Fim da Simulacao!\n"); 
-	system("pause");
-	exit(0);
+	system("pause");	
 }

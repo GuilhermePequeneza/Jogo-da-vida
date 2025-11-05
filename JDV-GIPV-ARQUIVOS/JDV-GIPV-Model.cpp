@@ -14,7 +14,7 @@
 #include "JDV-GIPV-Model.h"
 
 char **mundo = NULL;
-char **proxGen = NULL;
+//char **proxGen = NULL;
 int tamanho;
 
 TipoCel *pvivo, *pmorto, *pvivoprox;
@@ -25,23 +25,36 @@ void inicializarMundo()
 {
     //Aloca memória para as linhas conforme o tamanho 
     mundo = (char**)malloc(tamanho * sizeof(char*));
-    proxGen = (char**)malloc(tamanho * sizeof(char*));
+    //proxGen = (char**)malloc(tamanho * sizeof(char*));
     
     //Aloca memória para as colunas de cada linha
     for(int i = 0; i < tamanho; i++)
     {
         mundo[i] = (char*)malloc(tamanho * sizeof(char));
-        proxGen[i] = (char*)malloc(tamanho * sizeof(char));
+        //proxGen[i] = (char*)malloc(tamanho * sizeof(char));
     }
     
     // Inicializar com '.'
     for(int i = 0; i < tamanho; i++)
     {
-        for(int k = 0; k < tamanho; k++)
+        for(int j = 0; j < tamanho; j++)
         {
-            mundo[i][k] = '.';
+            mundo[i][j] = '.';
         }
     }
+
+	int i, j;
+	if(totvivo > 0)
+	{
+		TipoCel *aux = pvivo;
+		while(aux != NULL)
+		{
+			i = aux->lin;
+			j = aux->col;
+			mundo[i][j] = 'O';
+			aux = aux->next;
+		}
+	}
 }
 
 void simulacao()
@@ -49,11 +62,12 @@ void simulacao()
 	int numViz, i, j;
 	TipoCel *aux;
 	aux = pvivo;
+	
 
 	liberaLista(&pvivoprox);
 	totvivoprox = 0;
 
-	//fazer a proxima geracao e armazenar na matriz proxGen
+	
 	while(aux != NULL)
 	{
 		i = aux->lin;
@@ -61,13 +75,14 @@ void simulacao()
 
 		numViz = calcVizinha(i,j);
 		
-		if(numViz == 2 || numViz == 3)
+		if(numViz == 2 || numViz == 3){			
 			carregaVivoprox(i,j);		
+		}
 
 		aux = aux->next;
 	}
 	
-	aux = pmorto;
+	aux = pmorto;	
 	while(aux != NULL)
 	{
 		i = aux->lin;
@@ -75,13 +90,14 @@ void simulacao()
 
 		numViz = calcVizinha(i,j);
 		
-		if(numViz == 3)
+		if(numViz == 3){			
 			carregaVivoprox(i,j);		
+		}
 
 		aux = aux->next;
 	}
 
-	//copiar proxgen de volta pro mundo
+	//copiar proxgen de volta pro mundo	
 	liberaLista(&pvivo);
     pvivo = pvivoprox;
     totvivo = totvivoprox;
@@ -126,6 +142,7 @@ void carregaVivo(int ii, int jj)
 	if(aux == NULL)
 	{
 		//apresentaMensagem("Sem espaço na memoria para inclusao de celula viva\n");
+		printf("ERROERROERRO");
 		return;
 	}
 	aux->lin = ii;
