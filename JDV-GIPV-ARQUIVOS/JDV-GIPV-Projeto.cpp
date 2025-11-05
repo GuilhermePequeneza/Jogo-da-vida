@@ -1,5 +1,5 @@
  //JDV-GIPV - Projeto Jogo da Vida - Etapa 4
-//28/10/2025 - Grupo: GIPV
+//04/11/2025 - Grupo: GIPV
 //Guilherme Pequeneza
 //Igor Dias da Silva
 //Pedro Cione Barbosa
@@ -12,5 +12,6 @@
 int main(){
 
 	jogar();
-	
+	//Codigo com problmas de estagiario.
+	//Estagiario resolva até as 14h!!!
 }
