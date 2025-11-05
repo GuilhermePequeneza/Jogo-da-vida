@@ -10,6 +10,7 @@
 #include <iostream>
 #include <ctype.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include "JDV-GIPV-View.h"
 
 
@@ -218,3 +219,5 @@ void MostraLvivoprox()
 	}
 	printf("\n");
 }
+
+

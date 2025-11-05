@@ -52,53 +52,56 @@ void inicializarMundo()
 
 void simulacao()
 {
-	int numViz;
+	int numViz, i, j;
+	TipoCel *aux;
+	aux = pvivo;
+
+	liberaLista(&pvivoprox);
+	totvivoprox = 0;
+
 	//fazer a proxima geracao e armazenar na matriz proxGen
-	for(int i = 0; i < tamanho; i++)
+	while(aux != NULL)
 	{
-		for(int j = 0; j < tamanho; j++)
-		{
-			numViz = calcVizinha(i,j);
-			if(mundo[i][j] == '.' || mundo[i][j] == '+')
-			{
-				if(numViz == 3)
-				{
-					proxGen[i][j] = 'O';
-				}
-				else
-				{
-					proxGen[i][j] = '.';
-				}
-			}
-			else
-			{
-				if(numViz <= 1)
-				{
-					//morte por solidao
-					proxGen[i][j] = '.';
-				}
-				else if(numViz >= 4)
-				{
-					//morte por competicao
-					proxGen[i][j] = '.';
-				}
-				else
-				{
-					//sobrevive
-					proxGen[i][j] = 'O';
-				}
-			}
-		}
+		i = aux->lin;
+		j = aux->col;
+
+		numViz = calcVizinha(i,j);
+		
+		if(numViz == 2 || numViz == 3)
+			carregaVivoprox(i,j);		
+
+		aux = aux->next;
+	}
+	
+	aux = pmorto;
+	while(aux != NULL)
+	{
+		i = aux->lin;
+		j = aux->col;
+
+		numViz = calcVizinha(i,j);
+		
+		if(numViz == 3)
+			carregaVivoprox(i,j);		
+
+		aux = aux->next;
 	}
 
 	//copiar proxgen de volta pro mundo
-	for(int i = 0; i < tamanho; i++)
+	liberaLista(&pvivo);
+    pvivo = pvivoprox;
+    totvivo = totvivoprox;
+    pvivoprox = NULL;
+    totvivoprox = 0;
+
+
+	/*for(int i = 0; i < tamanho; i++)
 	{
 		for(int j = 0; j < tamanho; j++)
 		{
 			mundo[i][j] = proxGen[i][j];
 		}
-	}
+	}*/
 }
 
 int calcVizinha(int linha, int coluna){
@@ -270,4 +273,19 @@ void excluiLVivoprox(int ii,int jj)
 		}
 		totvivoprox--;
 	}
+}
+
+void liberaLista(TipoCel **lista)
+{
+    TipoCel *atual = *lista;
+    TipoCel *proximo;
+    
+    while(atual != NULL)
+    {
+        proximo = atual->next;  // Guarda o próximo antes de liberar
+        free(atual);            // Libera a célula atual
+        atual = proximo;        // Avança para a próxima
+    }
+    
+    *lista = NULL;  // Zera o ponteiro da lista
 }

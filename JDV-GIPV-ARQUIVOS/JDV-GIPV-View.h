@@ -40,3 +40,6 @@ int quantSim();
 
 //Perguntar se quer iniciar a simulacao
 char querIniciar();
+
+
+
