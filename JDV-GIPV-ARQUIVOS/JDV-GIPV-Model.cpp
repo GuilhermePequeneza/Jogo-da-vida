@@ -17,12 +17,6 @@ char **mundo = NULL;
 char **proxGen = NULL;
 int tamanho;
 
-typedef struct cel
-{
-	int lin,col;
-	struct cel *next;
-}TipoCel;
-
 TipoCel *pvivo, *pmorto, *pvivoprox;
 
 int totvivo, totmorto, totvivoprox;
