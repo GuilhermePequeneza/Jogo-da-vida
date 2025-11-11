@@ -11,6 +11,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <locale.h>
+#include <stdio.h> 
 #include "JDV-GIPV-Model.h"
 
 char **mundo = NULL;
@@ -142,7 +143,7 @@ void carregaVivo(int ii, int jj)
 	if(aux == NULL)
 	{
 		//apresentaMensagem("Sem espaço na memoria para inclusao de celula viva\n");
-		printf("ERROERROERRO");
+		//printf("ERROERROERRO");
 		return;
 	}
 	aux->lin = ii;
@@ -299,4 +300,48 @@ void liberaLista(TipoCel **lista)
     }
     
     *lista = NULL;  // Zera o ponteiro da lista
+}
+
+void salvarArquivo(const char *nomeArquivo, int numGeracao)
+{
+    FILE *arquivo = fopen(nomeArquivo, "a"); 
+    
+    if(arquivo == NULL)
+    {
+        return;
+    }
+    
+    TipoCel *aux = pvivo;
+    while(aux != NULL)
+    {
+        fprintf(arquivo, "%d,%d\n", aux->lin, aux->col);
+        aux = aux->next;
+    }
+    
+    fprintf(arquivo, "\n"); 
+    fclose(arquivo);
+}
+
+int carregarArquivo(const char *nomeArquivo)
+{
+    FILE *arquivo = fopen(nomeArquivo, "r");
+    
+    if(arquivo == NULL)
+    {
+        return 0;
+    }
+    liberaLista(&pvivo);
+    totvivo = 0;
+    
+    char linha[100];
+    int lin, col;
+    
+    // Lê coordenadas
+    while(fscanf(arquivo, "%d,%d", &lin, &col) == 2)
+    {
+        carregaVivo(lin, col);
+    }
+    
+    fclose(arquivo);
+    return 1;
 }

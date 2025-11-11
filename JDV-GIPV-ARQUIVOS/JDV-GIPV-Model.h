@@ -48,4 +48,7 @@ void excluiLVivoprox(int ii,int jj);
 
 void liberaLista(TipoCel **lista);
 
+void salvarArquivo(const char *nomeArquivo, int numGeracao);
+
+int carregarArquivo(const char *nomeArquivo);
 #endif

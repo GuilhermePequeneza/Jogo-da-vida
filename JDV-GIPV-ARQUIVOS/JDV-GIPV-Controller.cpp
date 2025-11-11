@@ -5,10 +5,9 @@
 //Pedro Cione Barbosa
 //Vitor Seiji Colombo Nishida
 
-
-#include "JDV-GIPV-Controller.h"
-#include "JDV-GIPV-View.cpp"
 #include "JDV-GIPV-Model.h"
+#include "JDV-GIPV-View.cpp"
+#include "JDV-GIPV-Controller.h"
 #include <windows.h>
 
 //FALTA: OPCAO DE MOSTRAR OU NAO MOSTRAR CELULAR MORTAS VIZINHAS
@@ -34,6 +33,9 @@ void jogar(){
 		else if(op == '4'){
 			mostrarVizinhosMortos();
 		}
+		 else if(op == '5'){  
+            gerenciarArquivos();
+        }
 
 	}while(op != '0');
 
@@ -164,6 +166,7 @@ void executarSim()
 
 		exibirMundo(tamanho);
 
+
 		if(velocidade == 0)
 		{
 			system("pause");
@@ -177,4 +180,29 @@ void executarSim()
 	
 	printf("\n Fim da Simulacao!\n"); 
 	system("pause");	
+}
+
+void gerenciarArquivos()
+{
+    char op = menuArquivo();
+    
+    if(op == '1')
+    {
+        salvarArquivo("savegame.dat", 0); // 0 indica estado atual
+        printf("Geracao salva com sucesso em %s!\n", "savegame.dat");
+        system("pause");
+    }
+    else if(op == '2')
+    {
+        if(carregarArquivo("savegame.dat"))
+        {
+            printf("Geracao carregada com sucesso!\n");
+            inicializarMundo();
+        }
+        else
+        {
+            printf("Falha ao carregar arquivo!\n");
+        }
+        system("pause");
+    }
 }

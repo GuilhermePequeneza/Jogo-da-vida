@@ -16,3 +16,5 @@ void mostrarVizinhosMortos();
 
 //executar a simulacao
 void executarSim();
+
+void gerenciarArquivos();

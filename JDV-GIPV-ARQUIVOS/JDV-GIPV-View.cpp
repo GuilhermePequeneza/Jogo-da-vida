@@ -123,16 +123,17 @@ char menuGeral()
 		printf("|Digite 2 para Exibir o Mundo:           |\n");
 		printf("|Digite 3 para Modificar uma celula:     |\n");
 		printf("|Digite 4 para Exibir vizinhos mortos:   |\n");
+		printf("|Digite 5 para salvar/carregar:          |\n");
     	printf("------------------------------------------\n");
     	
     	op = getchar();
     	fclear();
-    	if(op == '0' || op == '1' || op == '2' || op == '3' || op == '4')
+    	if(op == '0' || op == '1' || op == '2' || op == '3' || op == '4' || op == '5')
     	{
-              limpaTela();
+            limpaTela();
              return op;
             
-              }
+        }
         
 		else{
            	 
@@ -219,5 +220,37 @@ void MostraLvivoprox()
 	}
 	printf("\n");
 }
+
+char menuArquivo()
+{
+    char op;
+    int invalido = 0;
+    
+    do{
+        printf("------------------------------------------\n");
+        printf("|Digite 1 para Salvar geracao atual:     |\n");
+        printf("|Digite 2 para Carregar de arquivo:      |\n");
+        printf("|Digite 0 para Voltar:                   |\n");
+        printf("------------------------------------------\n");
+        
+        op = getchar();
+        fclear();
+        
+        if(op == '0' || op == '1' || op == '2')
+        {
+            limpaTela();
+            return op;
+        }
+        else
+        {
+            printf("Opcao invalida. Pressione Enter...\n");
+            getchar();
+            fclear();
+        }
+    }while(1);
+    
+    return '0';
+}
+
 
 
