@@ -1,5 +1,5 @@
- //JDV-GIPV - Projeto Jogo da Vida - Etapa 5
-//11/11/2025 - Grupo: GIPV
+//JDV-GIPV - Projeto Jogo da Vida - Etapa 6
+//25/11/2025 - Grupo: GIPV
 //Guilherme Pequeneza
 //Igor Dias da Silva
 //Pedro Cione Barbosa
@@ -9,8 +9,6 @@
 #include "JDV-GIPV-View.cpp"
 #include "JDV-GIPV-Controller.h"
 #include <windows.h>
-
-//FALTA: OPCAO DE MOSTRAR OU NAO MOSTRAR CELULAR MORTAS VIZINHAS
 
 void jogar(){
 	char op;
