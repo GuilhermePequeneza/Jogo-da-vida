@@ -52,7 +52,8 @@ void inicializarMundo()
 		{
 			i = aux->lin;
 			j = aux->col;
-			mundo[i][j] = 'O';
+			if(i >= 0 && j >= 0)
+				mundo[i][j] = 'O';
 			aux = aux->next;
 		}
 	}
@@ -239,27 +240,30 @@ void excluiLMorto(int ii,int jj)
 
 void carregaVivoprox(int ii, int jj)
 {
-	TipoCel *aux = (TipoCel *) malloc(sizeof(TipoCel)); //Define ponteiro e o aloca
+	if(ii > 0 && jj > 0)
+	{
+		TipoCel *aux = (TipoCel *) malloc(sizeof(TipoCel)); //Define ponteiro e o aloca
 
-	if(aux == NULL)
-	{
-		//apresentaMensagem("Sem espaço na memoria para inclusao de celula viva proxima\n");
-		return;
-	}
-	aux->lin = ii;
-	aux->col = jj;
+		if(aux == NULL)
+		{
+			//apresentaMensagem("Sem espaço na memoria para inclusao de celula viva proxima\n");
+			return;
+		}
+		aux->lin = ii;
+		aux->col = jj;
 
-	if(totvivoprox == 0)
-	{
-		pvivoprox = aux;
-		pvivoprox->next = NULL;
+		if(totvivoprox == 0)
+		{
+			pvivoprox = aux;
+			pvivoprox->next = NULL;
+		}
+		else
+		{
+			aux->next = pvivoprox;
+			pvivoprox = aux;
+		}
+		totvivoprox++;
 	}
-	else
-	{
-		aux->next = pvivoprox;
-		pvivoprox = aux;
-	}
-	totvivoprox++;
 }
 
 void excluiLVivoprox(int ii,int jj)

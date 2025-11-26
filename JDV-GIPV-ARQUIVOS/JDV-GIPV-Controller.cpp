@@ -102,34 +102,40 @@ void acharMortosVizinhos()
 	{
 		i = aux->lin;
 		j = aux->col;
-
+		
 		//superiores
-		if(mundo[i-1][j-1] == '.' )		
-			carregaMorto(i-1,j-1);
-		
-		if(mundo[i-1][j] == '.')		
-			carregaMorto(i-1,j);
-		
-		if(mundo[i-1][j+1] == '.')
-			carregaMorto(i-1,j+1);
+			
+			if((i-1 >= 0) && (j-1 >= 0))
+				if(mundo[i-1][j-1] == '.')		
+					carregaMorto(i-1,j-1);
+			if((i-1 >= 0) && (j >= 0))
+				if(mundo[i-1][j] == '.' )		
+					carregaMorto(i-1,j);
+			if( (i-1 >= 0) && (j+1 >= 0))
+				if(mundo[i-1][j+1] == '.' )
+					carregaMorto(i-1,j+1);
 
 
-		//Laterais
-		if(mundo[i][j-1] == '.')
-			carregaMorto(i,j-1);
-		if(mundo[i][j+1] == '.')
-			carregaMorto(i,j+1);
+			//Laterais
+			if((i >= 0) && (j-1 >= 0))
+				if(mundo[i][j-1] == '.' )
+					carregaMorto(i,j-1);
+			if((i >= 0) && (j+1 >= 0))
+				if(mundo[i][j+1] == '.')
+					carregaMorto(i,j+1);
 
 
-		//Inferiores
-		if(mundo[i+1][j-1] == '.' )		
-			carregaMorto(i+1,j-1);
+			//Inferiores
+			if((i+1 >= 0) && (j+1 >= 0))
+				if(mundo[i+1][j-1] == '.' )		
+					carregaMorto(i+1,j-1);
+			if((i+1 >= 0) && (j >= 0))
+				if(mundo[i+1][j] == '.' )		
+					carregaMorto(i+1,j);
+			if((i+1 >= 0) && (j+1 >= 0))
+				if(mundo[i+1][j+1] == '.')
+					carregaMorto(i+1,j+1);
 		
-		if(mundo[i+1][j] == '.')		
-			carregaMorto(i+1,j);
-		
-		if(mundo[i+1][j+1] == '.')
-			carregaMorto(i+1,j+1);
 
 		aux = aux->next;
 	}
@@ -155,13 +161,13 @@ void executarSim()
 		limpaTela();
 
 		printf("Geracao: %d/%d\n", geracao, quant); 		
-
-		acharMortosVizinhos();
-				
+	
+		acharMortosVizinhos();		
+		
 		simulacao();
-
+		
 		inicializarMundo();
-
+		
 		exibirMundo(tamanho);
 
 
