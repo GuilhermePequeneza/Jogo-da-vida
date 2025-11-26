@@ -75,14 +75,32 @@ void modificarCelula(){
 
 void mostrarVizinhosMortos(){
     int erro;
+    int i;
+    int j;
     do{
         erro = 0;
         char opcao = perguntaVizinhosMortos();
         if(opcao == 's'){
-            
+            acharMortosVizinhos();
+            TipoCel *aux = pmorto;
+            while(aux != NULL)
+			{
+            	i = aux->lin;
+            	j = aux->col;            	
+            	mundo[i][j] = '+';            	
+            	aux = aux->next;
+			}
         }
         else if(opcao == 'n'){
-            
+            acharMortosVizinhos();
+            TipoCel *aux = pmorto;
+            while(aux != NULL)
+			{
+            	i = aux->lin;
+            	j = aux->col;            	
+            	mundo[i][j] = '.';            	
+            	aux = aux->next;
+			}
         }
         else{
             erro = 1;
@@ -106,34 +124,34 @@ void acharMortosVizinhos()
 		//superiores
 			
 			if((i-1 >= 0) && (j-1 >= 0))
-				if(mundo[i-1][j-1] == '.')		
+				if(mundo[i-1][j-1] == '.' || mundo[i-1][j-1] == '+')		
 					carregaMorto(i-1,j-1);
 			if((i-1 >= 0) && (j >= 0))
-				if(mundo[i-1][j] == '.' )		
+				if(mundo[i-1][j] == '.' || mundo[i-1][j] == '+')		
 					carregaMorto(i-1,j);
 			if( (i-1 >= 0) && (j+1 >= 0))
-				if(mundo[i-1][j+1] == '.' )
+				if(mundo[i-1][j+1] == '.' || mundo[i-1][j+1] == '+')
 					carregaMorto(i-1,j+1);
 
 
 			//Laterais
 			if((i >= 0) && (j-1 >= 0))
-				if(mundo[i][j-1] == '.' )
+				if(mundo[i][j-1] == '.' || mundo[i][j-1] == '+')
 					carregaMorto(i,j-1);
 			if((i >= 0) && (j+1 >= 0))
-				if(mundo[i][j+1] == '.')
+				if(mundo[i][j+1] == '.' || mundo[i][j+1] == '+')
 					carregaMorto(i,j+1);
 
 
 			//Inferiores
 			if((i+1 >= 0) && (j+1 >= 0))
-				if(mundo[i+1][j-1] == '.' )		
+				if(mundo[i+1][j-1] == '.' || mundo[i+1][j-1] == '+')		
 					carregaMorto(i+1,j-1);
 			if((i+1 >= 0) && (j >= 0))
-				if(mundo[i+1][j] == '.' )		
+				if(mundo[i+1][j] == '.' || mundo[i+1][j] == '+')		
 					carregaMorto(i+1,j);
 			if((i+1 >= 0) && (j+1 >= 0))
-				if(mundo[i+1][j+1] == '.')
+				if(mundo[i+1][j+1] == '.' || mundo[i+1][j+1] == '+')
 					carregaMorto(i+1,j+1);
 		
 

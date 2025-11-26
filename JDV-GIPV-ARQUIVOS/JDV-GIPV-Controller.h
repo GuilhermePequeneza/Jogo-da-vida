@@ -18,3 +18,5 @@ void mostrarVizinhosMortos();
 void executarSim();
 
 void gerenciarArquivos();
+
+void acharMortosVizinhos();
